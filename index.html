@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小龙包科学实验室 · Little Longbao Lab</title>
+  <style>
+    :root {
+      --primary: #ff5722;
+      --primary-light: #fff3e0;
+      --primary-gradient: linear-gradient(135deg, #ff6b35, #f7931e);
+      --accent: #2979ff;
+      --accent-light: #e3f2fd;
+      --purple: #7c4dff;
+      --purple-light: #ede7f6;
+      --green: #00b0ff;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.07);
+      --shadow-lg: 0 10px 25px -5px rgba(255, 107, 53, 0.12), 0 8px 10px -6px rgba(0,0,0,0.04);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Nav */
+    .header-bar {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 0;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .brand-icon {
+      font-size: 1.5rem;
+    }
+    .header-tags {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-decoration: none;
+    }
+    .tag-linear {
+      background: #5e6ad218;
+      color: #5e6ad2;
+      border: 1px solid #5e6ad230;
+    }
+    .tag-github {
+      background: #24292e12;
+      color: #24292e;
+      border: 1px solid #24292e25;
+    }
+    .tag-wechat {
+      background: #07c16015;
+      color: #07c160;
+      border: 1px solid #07c16030;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 48px 0 36px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #ff6b35;
+      background: #fff0eb;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #1e293b 40%, #ff5722 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    /* Quick stats */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .stat-info .stat-num {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .stat-info .stat-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Core Philosophy Section */
+    .section-title-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin: 36px 0 20px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .phil-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .phil-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .phil-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .phil-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .phil-text {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* Workflow Diagram */
+    .workflow-card {
+      background: linear-gradient(145deg, #ffffff, #fffaf6);
+      border: 1px solid #fed7aa;
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 44px;
+      box-shadow: var(--shadow-md);
+    }
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+      position: relative;
+    }
+    .step-item {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      position: relative;
+    }
+    .step-item.active {
+      border-color: #ff6b35;
+      box-shadow: 0 0 0 2px #ff6b3525;
+    }
+    .step-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+    .step-item.active .step-badge {
+      background: #ff6b35;
+      color: #fff;
+    }
+    .step-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .step-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Spotlight Week 1 */
+    .spotlight-card {
+      background: #ffffff;
+      border: 2px solid #ff6b35;
+      border-radius: var(--radius);
+      padding: 30px;
+      margin-bottom: 44px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .spotlight-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--primary-gradient);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 18px;
+      border-bottom-left-radius: 14px;
+      letter-spacing: 0.5px;
+    }
+    .spotlight-header {
+      margin-bottom: 24px;
+    }
+    .spotlight-tagline {
+      color: #ff6b35;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .spotlight-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 4px 0 8px;
+    }
+    .spotlight-linear-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #5e6ad2;
+      background: #5e6ad215;
+      padding: 4px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .spotlight-linear-link:hover {
+      background: #5e6ad225;
+    }
+
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .spot-block {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .spot-block-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .material-list {
+      list-style: none;
+    }
+    .material-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .material-item:last-child {
+      border-bottom: none;
+    }
+    .steps-list {
+      counter-reset: exp-counter;
+      list-style: none;
+    }
+    .steps-item {
+      counter-increment: exp-counter;
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 10px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    .steps-item::before {
+      content: counter(exp-counter);
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 20px;
+      height: 20px;
+      background: #ff6b35;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .qa-box {
+      background: #fff7ed;
+      border-left: 3px solid #f97316;
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+    }
+    .qa-q {
+      font-weight: 700;
+      color: #9a3412;
+      margin-bottom: 3px;
+    }
+    .qa-a {
+      color: #7c2d12;
+    }
+
+    /* 12-Week Curriculum Grid */
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .week-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .week-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .week-card.current {
+      border: 2px solid #ff6b35;
+      background: #fffdfb;
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .week-pill {
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: #f1f5f9;
+      color: #475569;
+    }
+    .week-card.current .week-pill {
+      background: #ff6b35;
+      color: white;
+    }
+    .stage-pill {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .week-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+    .week-principle {
+      display: inline-block;
+      font-size: 0.78rem;
+      background: #eff6ff;
+      color: #1d4ed8;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .week-phenomenon {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .week-materials {
+      font-size: 0.8rem;
+      color: #475569;
+      background: #f8fafc;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Wechat Blueprint */
+    .wechat-box {
+      background: #07c16008;
+      border: 1px solid #07c16035;
+      border-radius: var(--radius);
+      padding: 26px;
+      margin-bottom: 40px;
+    }
+    .wechat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .wechat-icon {
+      font-size: 2rem;
+    }
+    .wechat-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #07c160;
+    }
+    .wechat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .wechat-item {
+      background: white;
+      border: 1px solid #07c16020;
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .wechat-item-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #07c160;
+      margin-bottom: 4px;
+    }
+    .wechat-item-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .wechat-item-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="header-bar">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-icon">🧪</span>
+        <span>小龙包科学实验室</span>
+      </div>
+      <div class="header-tags">
+        <a href="https://linear.app/long-chen/project/小龙包科学实验室-63f5807aa7df" target="_blank" class="tag-badge tag-linear">
+          <span>◆</span> Linear: 小龙包科学实验室
+        </a>
+        <a href="https://linear.app/long-chen/issue/LON-7/w01-彩虹牛奶探究液体表面张力与色彩扩散" target="_blank" class="tag-badge tag-linear">
+          <span>Issue: LON-7</span>
+        </a>
+        <span class="tag-badge tag-wechat">
+          <span>公众号：小龙包爸爸</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-eyebrow">7岁女孩的自主构建与物理直觉计划</div>
+      <h1 class="hero-title">在厨房造一个真实可触摸的物理世界</h1>
+      <p class="hero-subtitle">
+        在 AI 和短视频算法时代，拒绝纸上谈兵与被动灌输。每周陪女儿用厨房常备材料亲手完成一个科学实验，体验物理摩擦力，从“观众”变成“小小构建者”。
+      </p>
+    </section>
+
+    <!-- Quick Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #fff0eb; color: #ff6b35;">📅</div>
+        <div class="stat-info">
+          <div class="stat-num">每周 1 次</div>
+          <div class="stat-desc">周末 30-45 分钟亲子专属</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #e0f2fe; color: #0284c7;">🍳</div>
+        <div class="stat-info">
+          <div class="stat-num">100% 厨房材料</div>
+          <div class="stat-desc">牛奶、白醋、小苏打、淀粉、水</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #f3e8ff; color: #7c3aed;">🎯</div>
+        <div class="stat-info">
+          <div class="stat-num">Season 1: 12周</div>
+          <div class="stat-desc">从隐形力到流体、振动与相变</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #dcfce7; color: #16a34a;">✍️</div>
+        <div class="stat-info">
+          <div class="stat-num">双向资产沉淀</div>
+          <div class="stat-desc">首席科学家日志 + 公众号推文</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Philosophy -->
+    <div class="section-title-wrap">
+      <div>
+        <h2 class="section-title">💡 为什么坚持每周一次家庭实验？</h2>
+        <p class="section-desc">不仅是学物理知识，更是在大脑里植入一套全新的思维操作系统</p>
+      </div>
+    </div>
+
+    <div class="philosophy-grid">
+      <div class="phil-card">
+        <div class="phil-icon">📱 ⚡️ 🥽</div>
+        <div class="phil-title">对抗屏幕时代的“零摩擦力虚无”</div>
+        <div class="phil-text">
+          短视频和触屏是零阻力的被动喂养。物理世界的倒水会溢、贴胶带会漏、小苏打放少不会喷，充满着真实的“阻力”。真实物理世界的摩擦力，是把孩子从虚拟成瘾拉回现实的解药。
+        </div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-icon">🚀 🧬 🔭</div>
+        <div class="phil-title">马斯克的底层支点：物理第一性原理</div>
+        <div class="phil-text">
+          马斯克造火箭、做电池的思维全部源于物理学：剥离表象，回到最本质的物质契约。7 岁在厨房看过的表面张力、流体粘度和气压，会在脑海中生长为不可磨灭的具身直觉。
+        </div>
+      </div>
+      <div class="phil-card">
+        <div class="phil-icon">👩‍🔬 🛠️ 💡</div>
+        <div class="phil-title">从“怕犯错”到“工程师的调试心理”</div>
+        <div class="phil-text">
+          学校做错题被扣分，实验中没有“做错”，只有“未预期的变量结果”。小龙包是首席科学家，爸爸是助手，任何翻车都只是“让我们找找哪里有 bug”，培养终身抗挫力与构建者心态。
+        </div>
+      </div>
+    </div>
+
+    <!-- Workflow Diagram -->
+    <div class="workflow-card">
+      <div class="section-title" style="font-size: 1.25rem;">
+        <span>🔄</span> Linear 追踪 + GitHub 沉淀 + 公众号闭环
+      </div>
+      <p class="section-desc" style="margin-top: 4px;">每一次实验，都是一次敏捷 Sprint，形成标准闭环：</p>
+
+      <div class="flow-steps">
+        <div class="step-item active">
+          <span class="step-badge">周四 · 备课</span>
+          <div class="step-title">1. Linear Issue</div>
+          <div class="step-desc">生成 <code>guide.md</code> 指南卡，核对厨房原料，准备提问脚本</div>
+        </div>
+        <div class="step-item active">
+          <span class="step-badge">周六 · 动手</span>
+          <div class="step-title">2. 亲子实验实操</div>
+          <div class="step-desc">小龙包主导操作，爸爸负责拍照、护航与倾听原声</div>
+        </div>
+        <div class="step-item">
+          <span class="step-badge">周六晚 · 归档</span>
+          <div class="step-title">3. 现场速记整理</div>
+          <div class="step-desc">把语音杂记写入 <code>journal.md</code>，记录翻车点与变量发现</div>
+        </div>
+        <div class="step-item">
+          <span class="step-badge">周日 · 创作</span>
+          <div class="step-title">4. 公众号推文</div>
+          <div class="step-desc">Agent 协助提炼第一性原理，生成 <code>wechat-draft.md</code></div>
+        </div>
+        <div class="step-item">
+          <span class="step-badge">周一 · 闭环</span>
+          <div class="step-title">5. 交付与关单</div>
+          <div class="step-desc">Git 提交代码库，关闭 Linear Issue，开启下一周筹备</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spotlight Week 1 -->
+    <div class="spotlight-card" id="w01">
+      <div class="spotlight-badge">本周首发 · 即刻开启</div>
+      <div class="spotlight-header">
+        <div class="spotlight-tagline">WEEK 01 EXPERIMENT</div>
+        <h2 class="spotlight-title">🥛 彩虹牛奶大爆炸 (Magic Milk)</h2>
+        <a href="https://linear.app/long-chen/issue/LON-7/w01-彩虹牛奶探究液体表面张力与色彩扩散" target="_blank" class="spotlight-linear-link">
+          <span>◆ Linear Issue: LON-7 [In Progress]</span>
+        </a>
+      </div>
+
+      <div class="spotlight-grid">
+        <!-- Block 1: Materials -->
+        <div class="spot-block">
+          <div class="spot-block-title">
+            <span>🛒</span> 厨房材料清单 (100% 现成)
+          </div>
+          <ul class="material-list">
+            <li class="material-item">🥛 全脂纯牛奶 100ml（脂肪越足越震撼）</li>
+            <li class="material-item">🎨 红、黄、蓝食用色素（各1-2滴）</li>
+            <li class="material-item">🧴 家用洗洁精 1-2滴（放小盖子里）</li>
+            <li class="material-item">🥢 棉签 3-5 支</li>
+            <li class="material-item">🍽️ 浅口大平盘 1 个（白色盘底最佳）</li>
+          </ul>
+        </div>
+
+        <!-- Block 2: Steps -->
+        <div class="spot-block">
+          <div class="spot-block-title">
+            <span>👩‍🔬</span> 首席科学家动手四步
+          </div>
+          <ol class="steps-list">
+            <li class="steps-item"><strong>倒牛奶</strong>：小龙包把牛奶平铺盘底，静置30秒。</li>
+            <li class="steps-item"><strong>布星系</strong>：在盘中央滴入红黄蓝色素各1滴。</li>
+            <li class="steps-item"><strong>施魔法</strong>：棉签蘸满洗洁精，垂直轻触色素中央。</li>
+            <li class="steps-item"><strong>见证大爆炸</strong>：稳稳拿住不搅拌，屏息看颜色狂舞！</li>
+          </ol>
+        </div>
+
+        <!-- Block 3: Questions & Variables -->
+        <div class="spot-block">
+          <div class="spot-block-title">
+            <span>💬</span> 爸爸的发问脚本 & 变量探索
+          </div>
+          <div class="qa-box">
+            <div class="qa-q">Q1: 为什么干净棉签戳进去不爆炸，蘸洗洁精就疯了？</div>
+            <div class="qa-a">引导联想：洗洁精平时是洗什么用的？（抓油腻小脂肪！）</div>
+          </div>
+          <div class="qa-box">
+            <div class="qa-q">Q2: 自主变量挑战（让小龙包自己选）：</div>
+            <div class="qa-a">A: 换成自来水还会炸吗？<br>B: 换成食用油点下去呢？</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Curriculum 12 Weeks -->
+    <div class="section-title-wrap">
+      <div>
+        <h2 class="section-title">🗺️ 第一季 12 周实验总览 (Season 1 Curriculum)</h2>
+        <p class="section-desc">三大进阶阶段：感知隐形力 ➔ 流体与密度 ➔ 机械振动与微观相变</p>
+      </div>
+    </div>
+
+    <div class="curriculum-grid">
+
+      <!-- Week 1 -->
+      <div class="week-card current">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W01 · 本周</span>
+            <span class="stage-pill">阶段一：隐形力</span>
+          </div>
+          <div class="week-title">彩虹牛奶大爆炸</div>
+          <span class="week-principle">表面张力 · 乳化反应</span>
+          <p class="week-phenomenon">蘸洗洁精的棉签轻触牛奶，三种颜色如星系爆炸般剧烈翻滚旋转。</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 牛奶、色素、洗洁精、棉签、平盘</span>
+        </div>
+      </div>
+
+      <!-- Week 2 -->
+      <div class="week-card">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W02</span>
+            <span class="stage-pill">阶段一：隐形力</span>
+          </div>
+          <div class="week-title">会走路的彩虹桥</div>
+          <span class="week-principle">毛细现象 · 三原色混色</span>
+          <p class="week-phenomenon">水和颜色顺着折叠的纸巾“爬”过杯沿，在空杯中调配出全新的色彩。</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 5个透明杯、纸巾、色素、清水</span>
+        </div>
+      </div>
+
+      <!-- Week 3 -->
+      <div class="week-card">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W03</span>
+            <span class="stage-pill">阶段一：隐形力</span>
+          </div>
+          <div class="week-title">变硬变软的非牛顿流体</div>
+          <span class="week-principle">剪切增稠 · 物质状态</span>
+          <p class="week-phenomenon">重拳捶打是坚硬固体，慢慢把手插进去变成柔滑液体；抓成团一停手立刻化成水。</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 玉米淀粉、清水（比例2:1）、大碗</span>
+        </div>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="week-card">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W04</span>
+            <span class="stage-pill">阶段一：隐形力</span>
+          </div>
+          <div class="week-title">瓶子吞吐自如吹气球</div>
+          <span class="week-principle">酸碱中和 · 二氧化碳气压</span>
+          <p class="week-phenomenon">倒下气球里的小苏打粉，白醋瞬间沸腾翻滚，气体把气球吹得直立膨胀。</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 白醋、小苏打、饮料瓶、气球</span>
+        </div>
+      </div>
+
+      <!-- Week 5 -->
+      <div class="week-card">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W05</span>
+            <span class="stage-pill">阶段二：流体与密度</span>
+          </div>
+          <div class="week-title">厨房梦幻熔岩灯</div>
+          <span class="week-principle">液体密度 · 浮力 · 气体携带</span>
+          <p class="week-phenomenon">泡腾片在水油分层的杯底产生气泡，彩色液滴像岩浆一样上升破裂再缓缓坠落。</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 植物油、清水、色素、泡腾片、透明杯</span>
+        </div>
+      </div>
+
+      <!-- Week 6 -->
+      <div class="week-card">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W06</span>
+            <span class="stage-pill">阶段二：流体与密度</span>
+          </div>
+          <div class="week-title">神秘特工隐形密码信</div>
+          <span class="week-principle">有机酸氧化 · 热敏焦糖化</span>
+          <p class="week-phenomenon">柠檬汁在白纸上写字晾干完全隐形，电吹风加热后，棕褐色的字迹像魔法般显现。</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 柠檬汁、棉签、白纸、电吹风</span>
+        </div>
+      </div>
+
+      <!-- Week 7 -->
+      <div class="week-card">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W07</span>
+            <span class="stage-pill">阶段二：流体与密度</span>
+          </div>
+          <div class="week-title">弯曲光线的魔术喷泉</div>
+          <span class="week-principle">光的全反射 · 光纤通信原理</span>
+          <p class="week-phenomenon">激光射入水瓶侧面喷出的弧形水柱，直射的激光居然顺着弯曲的水流被锁在水里流下。</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 饮料瓶（侧面打孔）、激光笔、水</span>
+        </div>
+      </div>
+
+      <!-- Week 8 -->
+      <div class="week-card">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W08</span>
+            <span class="stage-pill">阶段二：流体与密度</span>
+          </div>
+          <div class="week-title">一枚硬币能顶多少滴水</div>
+          <span class="week-principle">分子内聚力 · 表面张力穹顶</span>
+          <p class="week-phenomenon">小小1元硬币上居然能滴30多滴水而不流下来，水面隆起成一个晶莹的半球形水泡。</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 1元硬币、塑料滴管、清水、洗洁精</span>
+        </div>
+      </div>
+
+      <!-- Week 9 -->
+      <div class="week-card">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W09</span>
+            <span class="stage-pill">阶段三：振动与相变</span>
+          </div>
+          <div class="week-title">会跳舞的保鲜膜盐粒</div>
+          <span class="week-principle">声波机械波 · 动能传递</span>
+          <p class="week-phenomenon">保鲜膜紧绷在碗口撒上细盐，在旁边敲锅或大喊，盐粒在膜上欢快起舞弹跳。</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 塑料碗、保鲜膜、细食盐、铁锅和木勺</span>
+        </div>
+      </div>
+
+      <!-- Week 10 -->
+      <div class="week-card">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W10</span>
+            <span class="stage-pill">阶段三：振动与相变</span>
+          </div>
+          <div class="week-title">折纸大力士承重桥</div>
+          <span class="week-principle">结构力学 · 瓦楞几何受力</span>
+          <p class="week-phenomenon">一张平整纸张连硬币都托不住，只要折成风琴瓦楞褶皱，能托起几十枚硬币甚至整杯水。</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 A4废纸若干、厚书本2本、硬币或积木</span>
+        </div>
+      </div>
+
+      <!-- Week 11 -->
+      <div class="week-card">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W11</span>
+            <span class="stage-pill">阶段三：振动与相变</span>
+          </div>
+          <div class="week-title">走钢丝的喷气小火箭</div>
+          <span class="week-principle">牛顿第三定律 · 动量守恒</span>
+          <p class="week-phenomenon">气球贴在棉线穿过的吸管上，松手瞬间气体狂喷，气球火箭顺着棉线呼啸冲过客厅。</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 细线、长条气球、吸管、透明胶带</span>
+        </div>
+      </div>
+
+      <!-- Week 12 -->
+      <div class="week-card">
+        <div>
+          <div class="card-top">
+            <span class="week-pill">W12</span>
+            <span class="stage-pill">阶段三：振动与相变</span>
+          </div>
+          <div class="week-title">玻璃瓶里亲手造一朵云</div>
+          <span class="week-principle">绝热膨胀 · 凝结核 · 相变</span>
+          <p class="week-phenomenon">温水瓶口放冰块，借助一缕烟尘作为微观凝结核，瓶内瞬间凭空凝聚出一团真实的白云！</p>
+        </div>
+        <div class="week-materials">
+          <span>📦 玻璃瓶、温水、冰块、火柴（家长安全把关）</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Wechat Blueprint -->
+    <div class="wechat-box">
+      <div class="wechat-header">
+        <span class="wechat-icon">📱</span>
+        <div>
+          <div class="wechat-title">公众号「小龙包爸爸」推文沉淀模型</div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">
+            让每周实验不仅是家庭记忆，更为更多焦虑的年轻父母提供可落地的科学育儿范本
+          </p>
+        </div>
+      </div>
+
+      <div class="wechat-grid">
+        <div class="wechat-item">
+          <div class="wechat-item-num">模块 01</div>
+          <div class="wechat-item-title">现实切片痛点</div>
+          <div class="wechat-item-desc">捕捉当下屏幕诱惑与学校死记硬背的现实反思，引出本周带娃动手契机。</div>
+        </div>
+        <div class="wechat-item">
+          <div class="wechat-item-num">模块 02</div>
+          <div class="wechat-item-title">厨房现场与翻车记</div>
+          <div class="wechat-item-desc">小龙包的原声金句、手忙脚乱的翻车实况、真实自然的童趣碰撞。</div>
+        </div>
+        <div class="wechat-item">
+          <div class="wechat-item-num">模块 03</div>
+          <div class="wechat-item-title">物理第一性原理</div>
+          <div class="wechat-item-desc">剥离表象看本质：为什么这个物理规律比死记公式更能培养终身底气。</div>
+        </div>
+        <div class="wechat-item">
+          <div class="wechat-item-num">模块 04</div>
+          <div class="wechat-item-title">下周厨房材料包</div>
+          <div class="wechat-item-desc">提前给出下周清单，号召读者朋友周末花半小时在厨房和我们一起玩。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>🧪 小龙包科学实验室 · 由小龙包与爸爸共同构建 · 驱动引擎：Linear + GitHub + Amp Agent</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+week: 1
+slug: magic-milk
+title: 彩虹牛奶大爆炸 (Magic Milk)
+linear_issue: LON-7
+category: 流体力学与表面化学
+core_principles:
+  - 液体表面张力 (Surface Tension)
+  - 分子极性与亲水/亲油端 (Polarity)
+  - 表面活性剂乳化作用 (Surfactant Action)
+target_age: 7
+duration_minutes: 30
+materials:
+  - 全脂牛奶 100ml（脂肪含量越丰富效果越震撼）
+  - 食用色素 3 种（红、黄、蓝，水性液体）
+  - 普通洗洁精 2-3 滴
+  - 医用或生活棉签 3-5 支
+  - 浅口大平盘 1 个（或白色深盘）
+status: ready
+created_at: 2026-09-08
