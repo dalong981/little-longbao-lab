@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>想让孩子成为下一个马斯克？先从这个厨房实验开始 · 小龙包爸爸</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #0f172a;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 20px 10px;
+    }
+    .poster-container {
+      width: 100%;
+      max-width: 680px;
+      background: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Top Hero Header */
+    .poster-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #312e81 100%);
+      color: #ffffff;
+      padding: 44px 32px 36px;
+      position: relative;
+    }
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 107, 53, 0.2);
+      border: 1px solid rgba(255, 107, 53, 0.5);
+      color: #ff9466;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      margin-bottom: 18px;
+    }
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #ff6b35, #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-intro {
+      font-size: 1rem;
+      color: #cbd5e1;
+      line-height: 1.7;
+      border-left: 3px solid #ff6b35;
+      padding-left: 14px;
+    }
+
+    /* Contrast Box */
+    .contrast-strip {
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 20px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .contrast-item {
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+    .contrast-bad {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+    .contrast-good {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+    }
+    .contrast-title {
+      font-weight: 800;
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Main Story Sections */
+    .story-body {
+      padding: 32px 28px;
+    }
+    .story-card {
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .card-num-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #ff6b35;
+      background: #fff0eb;
+      padding: 4px 12px;
+      border-radius: 16px;
+      margin-bottom: 10px;
+    }
+    .card-headline {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .card-text {
+      font-size: 0.94rem;
+      color: #475569;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    /* Photo Frame Styling */
+    .photo-frame {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      background: #000;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .photo-overlay-tag {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+    .photo-overlay-tag strong {
+      color: #fbbf24;
+    }
+
+    /* Special Highlight for Notebook */
+    .notebook-highlight-box {
+      background: #fffbeb;
+      border: 2px dashed #f59e0b;
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-top: 14px;
+    }
+    .notebook-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #b45309;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .notebook-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .nb-pill {
+      background: #ffffff;
+      border: 1px solid #fde68a;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #92400e;
+    }
+
+    /* Key Takeaway Box */
+    .takeaway-card {
+      background: linear-gradient(135deg, #f8fafc, #edf2f7);
+      border: 1px solid #cbd5e1;
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 36px;
+    }
+    .takeaway-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .takeaway-list {
+      list-style: none;
+    }
+    .takeaway-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      color: #334155;
+      line-height: 1.55;
+    }
+    .takeaway-item:last-child {
+      margin-bottom: 0;
+    }
+    .tk-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Bottom CTA / Traffic Magnet */
+    .poster-footer {
+      background: linear-gradient(135deg, #1e1b4b, #0f172a);
+      color: #ffffff;
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .footer-badge {
+      display: inline-block;
+      background: #07c160;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .footer-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .footer-desc {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      max-width: 480px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+    .footer-action-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 20px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .action-step {
+      font-size: 0.88rem;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .action-step strong {
+      color: #38bdf8;
+    }
+    .footer-subnote {
+      font-size: 0.76rem;
+      color: #64748b;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="poster-container">
+
+    <!-- 01 HERO -->
+    <header class="poster-hero">
+      <div class="hero-tagline">🚀 小龙包的厨房物理实验室 · W01 实操纪实</div>
+      <h1 class="hero-title">
+        想让孩子成为下一个马斯克？<br>
+        先从<span>这根棉签</span>与<span>一碗牛奶</span>开始
+      </h1>
+      <p class="hero-intro">
+        马斯克说，他所有颠覆性创新的底层力量都来自物理第一性原理。与其在屏幕算法里被动喂养，不如在厨房给 7 岁孩子造一个真实可触摸的物理世界。
+      </p>
+    </header>
+
+    <!-- 02 CONTRAST -->
+    <div class="contrast-strip">
+      <div class="contrast-item contrast-bad">
+        <div class="contrast-title">❌ 触屏与死记硬背</div>
+        手指一划全是被动刺激；学校科学课只背诵名词，缺乏真实摩擦力。
+      </div>
+      <div class="contrast-item contrast-good">
+        <div class="contrast-title">✅ 厨房物理实验</div>
+        手脑并用探索因果；允许翻车魔改，建立终身受用的物理直觉。
+      </div>
+    </div>
+
+    <!-- 03 STORY BODY -->
+    <div class="story-body">
+
+      <!-- Scene 1: Materials -->
+      <div class="story-card">
+        <span class="card-num-badge">STAGE 01 · 零门槛物料</span>
+        <h2 class="card-headline">100% 厨房常备：连包装盒都没扔</h2>
+        <p class="card-text">
+          全脂牛奶、红黄蓝水性色素、一滴洗洁精、几根棉签、一个白盘。没有昂贵教具，最好的科学实验室就在家里的餐桌上。
+        </p>
+        <div class="photo-frame">
+          <img src="images/IMG_4453.jpg" alt="实验物料准备">
+          <div class="photo-overlay-tag">
+            <strong>📸 现场实拍：</strong>小龙包自己从柜子里取出的全套极简工具
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 2: Setup -->
+      <div class="story-card">
+        <span class="card-num-badge">STAGE 02 · 首席科学家就位</span>
+        <h2 class="card-headline">倒牛奶、滴三原色：小手自主掌控</h2>
+        <p class="card-text">
+          牛奶缓缓铺满盘底，用小滴管小心数着滴数把红、黄、蓝色水滴入正中央。爸爸只做助手，凡是小手能做的绝不代劳。
+        </p>
+        <div class="photo-frame">
+          <img src="images/IMG_4454.jpg" alt="牛奶与三原色素">
+          <div class="photo-overlay-tag">
+            <strong>📸 现场实拍：</strong>暴风雨前的平静，三原色星系在牛奶表面静待破局
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 3: The Explosion & Variable Island -->
+      <div class="story-card">
+        <span class="card-num-badge">STAGE 03 · 高光爆炸与变量魔改</span>
+        <h2 class="card-headline">棉签一碰色彩大爆炸，更整杯倒入炸出“孤岛”</h2>
+        <p class="card-text">
+          蘸洗洁精的棉签轻触瞬间，色彩向四周狂暴炸开！玩了几次后，小龙包突发奇想<strong>把整杯洗洁精全倒了进去</strong>——洗洁精强大的表面活性剂斥力硬生生将液体割裂，在中央炸出了一座<strong>边界清晰的“彩色孤岛”</strong>！
+        </p>
+        <div class="photo-frame">
+          <img src="images/IMG_4455.jpg" alt="棉签触碰瞬间与彩色孤岛">
+          <div class="photo-overlay-tag">
+            <strong>📸 现场实拍：</strong>脱离剧本的自主变量探索，见证奇迹般的彩色孤岛地貌
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 4: Continuous Swirls -->
+      <div class="story-card">
+        <span class="card-num-badge">STAGE 04 · 持续翻滚的星系</span>
+        <h2 class="card-headline">洗洁精疯狂抓脂肪，黄+蓝碰撞出翠绿</h2>
+        <p class="card-text">
+          洗洁精分子到处游走追逐牛奶里的微小脂肪球（乳化去污原理），在盘内掀起微观洋流，推动颜色持续翻滚起舞几十秒，小龙包兴奋喊道：“看！变成翠绿色了！”
+        </p>
+        <div class="photo-frame">
+          <img src="images/IMG_4456.jpg" alt="色彩持续翻滚">
+          <div class="photo-overlay-tag">
+            <strong>📸 现场实拍：</strong>马兰戈尼效应与微观乳化流体，如同一座活跃在餐盘里的星云
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 5: Child's Notebook (THE SOUL) -->
+      <div class="story-card">
+        <span class="card-num-badge">STAGE 05 · 灵魂高光</span>
+        <h2 class="card-headline">一份写满拼音的手记：7 岁孩子的探索仪式感</h2>
+        <p class="card-text">
+          很多生字不会写，她就用拼音一笔一划认真标注。这是她人生中第一份完全属于自己的科学探索手记。
+        </p>
+        <div class="photo-frame">
+          <img src="images/IMG_4457.jpg" alt="小龙包的拼音实验手记">
+          <div class="photo-overlay-tag">
+            <strong>📸 现场实拍：</strong>二年级练习册上的真实笔迹
+          </div>
+        </div>
+
+        <div class="notebook-highlight-box">
+          <div class="notebook-title">🔍 放大手记细节中的“爆款金句”：</div>
+          <div class="notebook-tags">
+            <span class="nb-pill">🥣 四：pán 子（盘子）</span>
+            <span class="nb-pill">🧴 五：洗 jēy 巾（洗洁精）</span>
+            <span class="nb-pill">🎨 “是翠绿色的”</span>
+            <span class="nb-pill">💥 “点... kuò sàn”</span>
+            <span class="nb-pill">✨ “再滴色水，jǜi 没了”</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Takeaways -->
+      <div class="takeaway-card">
+        <div class="takeaway-title">
+          <span>🧠</span> 这一场 40 分钟实验，孩子究竟带走了什么？
+        </div>
+        <ul class="takeaway-list">
+          <li class="takeaway-item">
+            <span class="tk-icon">💡</span>
+            <div><strong>物理第一性原理的具身直觉</strong>：水分子手拉手的“表面张力”，与洗洁精抓油脂的“乳化作用”，化作终身受用的物理直觉。</div>
+          </li>
+          <li class="takeaway-item">
+            <span class="tk-icon">🛠️</span>
+            <div><strong>工程师式的调试心态（Agency）</strong>：不怕翻车，主动改变变量（整杯倒入），体验切实改变物理世界的掌控感。</div>
+          </li>
+          <li class="takeaway-item">
+            <span class="tk-icon">🌟</span>
+            <div><strong>费曼学习法与科学小老师</strong>：第二天主动向好朋友生动讲解，甚至把没用完的试剂送给同学妈妈，邀请好朋友也去厨房做！</div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- 04 FOOTER CTA -->
+    <footer class="poster-footer">
+      <span class="footer-badge">公众号 · 小龙包爸爸</span>
+      <h3 class="footer-title">陪伴孩子，从屏幕走向现实构建者</h3>
+      <p class="footer-desc">
+        每周六 40 分钟，用厨房常备物带娃做一次真实实验。<br>
+        拒绝纸上谈兵，用物理学重新点燃孩子眼里的好奇光芒。
+      </p>
+
+      <div class="footer-action-box">
+        <div class="action-step">
+          <span>📖</span> 微信搜索关注公众号：<strong>「小龙包爸爸」</strong>
+        </div>
+        <div class="action-step">
+          <span>🎯</span> 阅读本文完整深度纪实与第一性原理深度反思
+        </div>
+        <div class="action-step">
+          <span>🧪</span> 获取<strong>《第一季 12 周厨房物理实验全套指南》</strong>
+        </div>
+      </div>
+
+      <div class="footer-subnote">
+        下周预告：W02《会走路的彩虹桥》· 欢迎周末和我们一起在厨房开动！
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
