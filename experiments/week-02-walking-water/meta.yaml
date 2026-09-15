@@ -1,0 +1,19 @@
+week: 2
+slug: walking-water
+title: 会走路的彩虹桥 (Walking Water)
+linear_issue: LON-9
+category: 流体物理与色彩光学
+core_principles:
+  - 毛细现象 (Capillary Action: 附着力与内聚力)
+  - 色彩三原色混色 (Primary Color Mixing)
+  - 虹吸效应与连通器液位平衡 (Equilibrium)
+target_age: 7
+duration_minutes: 40
+materials:
+  - 透明水杯 5 个（透明塑料杯或玻璃杯，一字排开）
+  - 厨房纸巾 4 张（纤维强韧、不易泡烂）
+  - 水性食用色素（红、黄、蓝，沿用 W01 剩余）
+  - 清水约 500ml
+  - 搅拌筷子 1 根
+status: ready
+created_at: 2026-09-15
