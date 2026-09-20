@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>会走路的彩虹桥｜小龙包科学实验室 W02</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #172033; --pink: #ff4f79; --yellow: #ffd04d; --green: #38c995; }
+    body {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 18px 12px 24px; color: var(--ink); background: #0d1018;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    .app { width: 100%; max-width: 580px; }
+    .toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; color: #9299aa; font-size: 12px; }
+    .counter { padding: 5px 13px; border-radius: 99px; color: white; background: rgba(255,255,255,.12); font-weight: 800; letter-spacing: 1px; }
+    .viewport {
+      position: relative; width: 100%; aspect-ratio: 3/4; max-height: 770px; overflow: hidden;
+      border-radius: 26px; background: #fff; box-shadow: 0 28px 70px rgba(0,0,0,.55); touch-action: pan-y;
+    }
+    .slide {
+      position: absolute; inset: 0; display: none; flex-direction: column; padding: 28px 27px 24px;
+      overflow: hidden; background: #fffdf8; opacity: 0; transform: translateX(28px);
+    }
+    .slide.active { display: flex; opacity: 1; transform: none; animation: enter .28s ease both; }
+    @keyframes enter { from { opacity: 0; transform: translateX(28px); } }
+    .topline { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+    .tag { display: inline-flex; padding: 6px 12px; border-radius: 99px; background: #ffe9ef; color: #d9305e; font-size: 12px; font-weight: 900; letter-spacing: .3px; }
+    .brand { color: #9b9ead; font-size: 11px; font-weight: 700; white-space: nowrap; }
+    h2 { font-size: 29px; line-height: 1.18; letter-spacing: -.8px; font-weight: 950; margin-bottom: 8px; }
+    .lead { font-size: 14px; line-height: 1.55; color: #5d6270; margin-bottom: 14px; }
+    .photo { position: relative; flex: 1; min-height: 0; overflow: hidden; border-radius: 18px; background: #e9e9e9; box-shadow: 0 8px 24px rgba(29,32,42,.11); }
+    .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo img.contain { object-fit: contain; background: #f4eee2; }
+    .caption { position: absolute; left: 10px; right: 10px; bottom: 10px; padding: 9px 12px; border-radius: 12px; color: white; background: rgba(19,24,36,.82); backdrop-filter: blur(8px); font-size: 12px; line-height: 1.45; }
+    .mind { margin-top: 13px; border-radius: 14px; padding: 11px 14px; background: #eefbf6; color: #17684e; font-size: 13px; line-height: 1.5; }
+    .mind strong { font-weight: 900; }
+    .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex: 1; min-height: 0; }
+    .duo .photo:first-child { transform: rotate(-1.2deg); }
+    .duo .photo:last-child { transform: rotate(1.2deg); }
+    .mini-label { position: absolute; top: 10px; left: 10px; z-index: 2; padding: 5px 9px; border-radius: 8px; color: #fff; background: #1d2433; font-size: 11px; font-weight: 800; }
+
+    /* Cover */
+    .cover { padding: 0; color: white; background: #111827; }
+    .cover-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,12,22,.08) 0%, rgba(8,12,22,.16) 34%, rgba(10,13,25,.93) 74%, #101321 100%); }
+    .cover-content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding: 34px 30px 28px; }
+    .cover-kicker { align-self: flex-start; margin-bottom: 14px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.42); border-radius: 99px; background: rgba(17,24,39,.38); backdrop-filter: blur(8px); font-size: 12px; font-weight: 850; }
+    .cover h1 { font-size: 43px; line-height: 1.08; letter-spacing: -2px; font-weight: 950; text-shadow: 0 4px 18px rgba(0,0,0,.28); }
+    .cover h1 em { font-style: normal; color: #ffdf4f; }
+    .cover-sub { margin-top: 13px; color: #e7e9ef; font-size: 15px; font-weight: 650; }
+    .swipe { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; color: #b9bfcc; font-size: 12px; }
+    .arrow { color: #ffdf4f; font-size: 20px; animation: nudge 1.2s infinite; }
+    @keyframes nudge { 50% { transform: translateX(6px); } }
+
+    /* Result */
+    .result { background: linear-gradient(150deg, #fff9df, #fff 45%, #edfff8); }
+    .result h2 span { color: #ef4f74; }
+    .level-line { position: absolute; left: 7%; right: 7%; top: 56%; border-top: 2px dashed #fff; filter: drop-shadow(0 1px 2px #333); }
+    .level-line b { position: absolute; right: 0; bottom: 6px; padding: 4px 8px; background: #fff; color: #e23862; border-radius: 6px; font-size: 11px; }
+
+    /* Notebook */
+    .notebook { background: #fff8ec; }
+    .notebook h2 { font-size: 28px; }
+    .quote { margin-top: 12px; padding: 12px 14px; border-left: 5px solid #ffbf2f; background: white; border-radius: 0 13px 13px 0; font-size: 14px; line-height: 1.45; box-shadow: 0 5px 18px rgba(83,55,10,.08); }
+    .quote strong { color: #db3d67; }
+
+    /* Outro */
+    .outro { background: linear-gradient(155deg, #17213c 0%, #252457 58%, #0f5962 100%); color: white; }
+    .outro .brand { color: #b7bfd1; }
+    .outro .tag { background: rgba(255,255,255,.12); color: #ffe86a; }
+    .guess { padding: 20px; border-radius: 20px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.17); }
+    .guess-label { color: #62e9bf; font-size: 12px; font-weight: 900; }
+    .guess p { margin-top: 8px; font-size: 22px; line-height: 1.4; font-weight: 900; }
+    .outro-shot { height: 150px; margin: 15px 0; border-radius: 17px; overflow: hidden; position: relative; }
+    .outro-shot img { width: 100%; height: 100%; object-fit: cover; }
+    .cta { margin-top: auto; padding: 18px; border-radius: 18px; text-align: center; color: #172033; background: #fff; }
+    .wechat { display: inline-block; margin-bottom: 7px; padding: 4px 10px; border-radius: 99px; background: #07c160; color: white; font-size: 11px; font-weight: 900; }
+    .cta h3 { font-size: 21px; }
+    .cta p { margin-top: 7px; color: #666b78; font-size: 12px; line-height: 1.55; }
+    .preview { margin-top: 10px; padding-top: 10px; border-top: 1px dashed #d9dce3; color: #5843b7; font-size: 12px; font-weight: 850; }
+
+    .nav { display: flex; gap: 10px; margin-top: 14px; }
+    button { flex: 1; border: 0; border-radius: 13px; padding: 12px; color: white; background: #252b38; font: 800 14px inherit; cursor: pointer; }
+    button.next { background: linear-gradient(135deg, #ff4f79, #ff854d); }
+    button:disabled { opacity: .28; cursor: default; }
+    .dots { display: flex; justify-content: center; gap: 7px; margin-top: 13px; }
+    .dot { width: 8px; height: 8px; border: 0; padding: 0; flex: none; border-radius: 99px; background: #3a404d; transition: .2s; }
+    .dot.active { width: 24px; background: #ff587c; }
+    @media (max-width: 480px) {
+      body { padding: 10px 8px 18px; align-items: flex-start; }
+      .slide { padding: 22px 20px 19px; }
+      h2 { font-size: 24px; } .lead { font-size: 12px; margin-bottom: 10px; }
+      .cover h1 { font-size: 35px; } .cover-content { padding: 28px 24px 24px; }
+      .mind { font-size: 11px; margin-top: 9px; padding: 9px 11px; }
+      .notebook h2 { font-size: 23px; } .quote { font-size: 12px; padding: 9px 11px; }
+      .outro-shot { height: 120px; margin: 10px 0; } .guess { padding: 14px; } .guess p { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="toolbar"><span>左右滑动 · 方向键也能翻页</span><span class="counter" id="counter">01 / 06</span></div>
+    <section class="viewport" id="slider" aria-label="会走路的彩虹桥翻页卡片">
+      <article class="slide cover active" data-index="1">
+        <img class="cover-photo" src="images/4搭建完成.jpg" alt="厨房里搭建完成的五杯彩虹桥">
+        <div class="cover-content">
+          <div class="cover-kicker">小龙包的厨房物理实验室 · W02</div>
+          <h1>水真的会<br><em>“爬山坡”</em>？<br>我们造了座彩虹桥</h1>
+          <p class="cover-sub">5 个杯子 · 4 座纸桥 · 一夜奇迹</p>
+          <div class="swipe"><span>真实亲子实验记录</span><span>左滑看水怎么走 <b class="arrow">→</b></span></div>
+        </div>
+      </article>
+
+      <article class="slide" data-index="2">
+        <div class="topline"><span class="tag">01｜小手开工</span><span class="brand">小龙包科学实验室</span></div>
+        <h2>不用实验室，<br>厨房就是孩子的主场</h2>
+        <p class="lead">5 个透明杯、3 瓶色素、厨房纸和水。她自己摆杯、倒水、调出粉黄绿。</p>
+        <div class="duo">
+          <div class="photo"><span class="mini-label">材料就位</span><img src="images/1准备材料.jpg" alt="五个杯子、三瓶色素、纸巾和水"></div>
+          <div class="photo"><span class="mini-label">三色完成</span><img src="images/2三个颜色的杯子.jpg" alt="粉黄绿三个颜色的水杯"></div>
+        </div>
+        <div class="mind">💡 <strong>生活心法：</strong>凡是小手能做的，大人别抢。掌控感，是好奇心的第一桶燃料。</div>
+      </article>
+
+      <article class="slide" data-index="3">
+        <div class="topline"><span class="tag">02｜给水架桥</span><span class="brand">小龙包科学实验室</span></div>
+        <h2>纸巾折成“人”字，<br>水开始往高处爬</h2>
+        <p class="lead">厨房纸里藏着无数根看不见的“小吸管”。水分子贴着纤维，一拉一牵地翻过杯沿。</p>
+        <div class="duo">
+          <div class="photo"><span class="mini-label">折一座桥</span><img src="images/3厨房纸.jpg" alt="折叠好的厨房纸桥"></div>
+          <div class="photo"><span class="mini-label">4 桥开走</span><img src="images/4搭建完成.jpg" alt="四座纸桥架设完成"></div>
+        </div>
+        <div class="mind">🌱 <strong>一句话秒懂：</strong>这叫毛细现象。大树也用类似的本领，把水送到高高的叶子上。</div>
+      </article>
+
+      <article class="slide result" data-index="4">
+        <div class="topline"><span class="tag">03｜第二天见证</span><span class="brand">小龙包科学实验室</span></div>
+        <h2>最震撼的不是混色，<br>是 5 杯水<span>几乎一样高</span></h2>
+        <p class="lead">原本干爽的两个空杯积满了“走过来”的水。流动没有无休止——接近平衡，它就慢慢停下。</p>
+        <div class="photo">
+          <img src="images/5第二天的结果.jpg" alt="第二天五个杯子的水位达到一致">
+          <div class="level-line"><b>看这条水平线！</b></div>
+          <div class="caption">隔夜实拍：空杯有了水，高杯降了水位，5 个杯子站成一条平衡线。</div>
+        </div>
+        <div class="mind">⏳ <strong>生活心法：</strong>有些答案不会立刻出现。给实验一夜，也给孩子一点等待。</div>
+      </article>
+
+      <article class="slide notebook" data-index="5">
+        <div class="topline"><span class="tag">04｜科学家的手绘本</span><span class="brand">7 岁 · 原版记录</span></div>
+        <h2>达·芬奇也是画画！<br>记录，不等于默写生字</h2>
+        <p class="lead">彩虹、白云、5 个杯子和 4 座桥——她画出了自己真正看懂的实验。</p>
+        <div class="photo"><img class="contain" src="images/6实验记录.jpg" alt="小龙包手绘彩虹白云、五个水杯和纸桥的实验记录"></div>
+        <div class="quote"><strong>不用逼孩子写生字。</strong>画出来的记录更有灵气，也更接近科学最初的样子。</div>
+      </article>
+
+      <article class="slide outro" data-index="6">
+        <div class="topline"><span class="tag">05｜实验之外，还有新问题</span><span class="brand">小龙包科学实验室</span></div>
+        <h2>她突然提出：<br>“三桥合一”会怎样？</h2>
+        <div class="guess">
+          <div class="guess-label">🌈 首席科学家的新猜想</div>
+          <p>“把三个颜色的纸桥，都搭进同一个空杯，会混出什么颜色？”</p>
+        </div>
+        <div class="outro-shot"><img src="images/5第二天的结果.jpg" alt="彩虹桥实验最终结果"></div>
+        <div class="cta">
+          <span class="wechat">微信公众号</span>
+          <h3>关注「小龙包爸爸」</h3>
+          <p>每周六，和 7 岁女儿在厨房<br>造一个真实可触摸的物理世界。</p>
+          <div class="preview">下周 W03｜《变硬变软的非牛顿流体》</div>
+        </div>
+      </article>
+    </section>
+
+    <nav class="nav" aria-label="翻页按钮">
+      <button id="prev" disabled>← 上一张</button><button class="next" id="next">下一张 →</button>
+    </nav>
+    <div class="dots" id="dots">
+      <button class="dot active" data-slide="1" aria-label="第1页"></button><button class="dot" data-slide="2" aria-label="第2页"></button><button class="dot" data-slide="3" aria-label="第3页"></button><button class="dot" data-slide="4" aria-label="第4页"></button><button class="dot" data-slide="5" aria-label="第5页"></button><button class="dot" data-slide="6" aria-label="第6页"></button>
+    </div>
+  </main>
+  <script>
+    let current = 1;
+    const total = 6;
+    const slides = [...document.querySelectorAll('.slide')];
+    const dots = [...document.querySelectorAll('.dot')];
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const counter = document.getElementById('counter');
+    const slider = document.getElementById('slider');
+    function goToSlide(n) {
+      if (n < 1 || n > total) return;
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      current = n; slides[n - 1].classList.add('active'); dots[n - 1].classList.add('active');
+      counter.textContent = `${String(n).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+      prev.disabled = n === 1; next.disabled = n === total;
+    }
+    prev.addEventListener('click', () => goToSlide(current - 1));
+    next.addEventListener('click', () => goToSlide(current + 1));
+    dots.forEach(dot => dot.addEventListener('click', () => goToSlide(Number(dot.dataset.slide))));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') goToSlide(current - 1);
+      if (event.key === 'ArrowRight') goToSlide(current + 1);
+    });
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
+    slider.addEventListener('touchend', event => {
+      const distance = event.changedTouches[0].screenX - touchStartX;
+      if (distance < -40) goToSlide(current + 1);
+      if (distance > 40) goToSlide(current - 1);
+    }, { passive: true });
+  </script>
+</body>
+</html>
