@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>当 7 岁女儿用画画代替写字：我们造了座彩虹桥 · 微信排版页</title>
+  <style>
+    body {
+      background-color: #f1f5f9;
+      margin: 0;
+      padding: 20px 10px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    .top-action-bar {
+      position: sticky;
+      top: 10px;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 12px 24px;
+      border-radius: 40px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .copy-btn {
+      background: linear-gradient(135deg, #07c160, #059669);
+      color: #ffffff;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s, background 0.2s;
+    }
+    .copy-btn:hover {
+      background: linear-gradient(135deg, #0ab356, #047857);
+    }
+    .copy-btn:active {
+      transform: scale(0.97);
+    }
+    .tip-text {
+      color: #94a3b8;
+      font-size: 0.82rem;
+    }
+    .article-box {
+      width: 100%;
+      max-width: 677px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      padding: 36px 28px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Bar -->
+  <div class="top-action-bar">
+    <button class="copy-btn" id="copyArticleBtn" onclick="copyWechatContent()">
+      <span>📋 一键复制公众号排版全文</span>
+    </button>
+    <span class="tip-text" id="statusTip">点击后直接到微信后台编辑器按 Ctrl+V / Cmd+V 粘贴</span>
+  </div>
+
+  <!-- The Content Container to be Copied into WeChat Editor -->
+  <div class="article-box" id="wechatArticleContent">
+
+    <!-- Title Header -->
+    <section style="margin-bottom: 28px; text-align: left;">
+      <h1 style="font-size: 24px; font-weight: 900; color: #1e293b; line-height: 1.4; margin: 0 0 14px 0; letter-spacing: -0.5px;">
+        当 7 岁女儿用画画代替写字：我们造了座彩虹桥
+      </h1>
+      <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+        <span style="font-size: 13px; color: #ff5722; font-weight: 700; background: #fff0eb; padding: 2px 8px; border-radius: 4px;">
+          小龙包的厨房物理实验室 · 02期
+        </span>
+        <span style="font-size: 13px; color: #64748b;">作者：小龙包爸爸</span>
+      </div>
+    </section>
+
+    <!-- Lead / Quote Box -->
+    <section style="background: #f8fafc; border-left: 4px solid #ff5722; border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 0 0 28px 0;">
+      <p style="font-size: 14px; color: #475569; line-height: 1.7; margin: 0;">
+        <strong>写在前面：</strong><br>
+        很多人问我，家庭实验到底能坚持多久？孩子会不会只有三分钟热度？<br>
+        这周四晚上，小龙包刚吃完饭就拉着我的衣角问：<em>“爸爸，这周我们做什么实验呀？”</em><br>
+        当一个 7 岁的孩子开始自发倒数期待周末的科学时刻，我知道，某种属于她的<strong>内在自主性（Agency）</strong>已经悄然生根。这一期，我们遭遇了一次“小失误”，但正是这次失误，让我们看到了比教科书更真实的科学与成长。
+      </p>
+    </section>
+
+    <!-- SECTION 01 -->
+    <section style="margin-bottom: 32px;">
+      <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #ff5722; padding-bottom: 6px; margin: 0 0 16px 0; display: inline-block;">
+        01 / 一次因“大方”导致的偏航
+      </h2>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        周五晚上准备实验时，我们遇到了一个小意外。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        原本这期《会走路的彩虹桥》，标准配方需要红、黄、蓝基础三原色。但翻开工具箱我才猛然想起来：<strong>上周做完实验，小龙包太大方，把家里仅有的红、蓝色素全部送给以前的同学妈妈了！</strong>
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        在抽屉里翻箱倒柜，最后只凑出了三瓶仅存的颜色：<strong>黄色、粉色、绿色</strong>。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        换作平时，成年人的第一反应往往是：“算了吧，颜色不全，等网上买的颜料到了下周再做。”
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        但看着小龙包系着围裙、两眼放光的样子，我决定：<strong>就地取材！有什么就用什么！真实的生活从来不需要无菌的完美，动手本身就是最好的开始。</strong>
+      </p>
+
+      <!-- Setup Card -->
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 16px; margin: 16px 0;">
+        <div style="font-weight: 800; font-size: 14px; color: #166534; margin-bottom: 8px;">
+          🛠️ 依然是极简的 0 门槛物料：
+        </div>
+        <div style="font-size: 14px; color: #15803d; line-height: 1.6;">
+          • 一次性透明塑料杯 5 个（几毛钱）；<br>
+          • 家用厨房卷纸 4 张（纤维韧、不易泡烂）；<br>
+          • 仅剩的三色食用色素（黄、粉、绿）；<br>
+          • 一大杯自来水。
+        </div>
+      </div>
+
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        小龙包自己把 5 个杯子排成一字长蛇阵，隔一个倒满清水，小心翼翼用滴管调出了粉、黄、绿三杯彩水。接着，我们把 4 张厨房纸巾折成 2 厘米宽的倒 V 字形拱桥，两两搭在相邻的杯沿之间。
+      </p>
+    </section>
+
+    <!-- SECTION 02 -->
+    <section style="margin-bottom: 32px;">
+      <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #ff5722; padding-bottom: 6px; margin: 0 0 16px 0; display: inline-block;">
+        02 / 科学记录从来不是语文听写：放手让她用画画表达
+      </h2>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        搭建完成后，到了实验记录环节。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        上周她在练习本上用拼音写下“pán 子”和“洗 jēy 巾”，虽然极其可爱，但我敏锐察觉到她对纯写字记录有一点点心理阻力——她才刚上二年级，很多科学现象她心里完全明白、嘴上能说得头头是道，但手头的识字量跟不上。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        很多家长在辅导低年级孩子时，最容易犯的一个错误就是把任何事情都变成“语文默写课”：逼着孩子查字典、纠正错别字、规定字数。结果科学的火苗还没烧起来，先被语文听写的挫败感给浇灭了。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        这次我把彩铅递给她：“小龙包，真正的科学家不仅写字，更擅长画图。你可以把它画出来！”
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        她整个人一下子松弛下来，拿起画笔刷刷画了起来。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        十几分钟后，练习本上诞生了一份惊艳我的<strong>儿童科学图绘手记</strong>：
+      </p>
+
+      <!-- Drawing Notebook Highlights -->
+      <div style="background: #fffbeb; border: 2px dashed #f59e0b; border-radius: 12px; padding: 18px; margin: 18px 0;">
+        <div style="font-size: 14px; color: #b45309; font-weight: 800; margin-bottom: 8px;">
+          🎨 小龙包的手绘实验手记拆解：
+        </div>
+        <div style="font-size: 14px; color: #78350f; line-height: 1.7;">
+          🌈 <strong>右上角：</strong>工工整整画了一道七彩虹和一朵可爱的白云；<br>
+          📝 <strong>标题：</strong>稚嫩却有力地写着五个大字《会走路的[彩虹桥]》；<br>
+          🧪 <strong>核心参数：</strong>简洁标注“5 杯子（3 有水 2 空）”、“3 色（粉 绿 黄）”、“一纸”；<br>
+          📐 <strong>底部架构：</strong>整齐画出 5 个水杯，用拱形连线画出横跨两两杯口的纸桥，并在杯底准确标注了“绿”、“粉”、“黄”！
+        </div>
+      </div>
+
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        那一刻我特别庆幸自己的放手。<strong>达·芬奇的手稿里画满了草图，伽利略用素描记录月相阴影。科学记录的核心是忠实表达客观事实与逻辑结构，而不是文字字形规训。</strong>
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        当她用最舒适的画笔把杯子和拱桥画下来时，连通器和毛细现象的物理模型，已经深深烙印进了她的脑海。
+      </p>
+    </section>
+
+    <!-- SECTION 03 -->
+    <section style="margin-bottom: 32px;">
+      <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #ff5722; padding-bottom: 6px; margin: 0 0 16px 0; display: inline-block;">
+        03 / 跨夜的终极奇迹：水真的会“爬山坡”
+      </h2>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        这个实验跟第 1 周那种 0.1 秒瞬间炸开的“彩虹牛奶”完全不同，它是一场需要耐心的<strong>“慢科学”</strong>。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        纸桥刚搭上去，水就像长了脚，顺着纸纤维慢慢往上攀爬。过了半个多小时，水翻过了杯沿的最高点，开始一滴一滴落进原本干爽的空杯中。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        第二天早晨小龙包一睁眼，连鞋都顾不上穿好就光着脚丫冲到客厅——
+      </p>
+      <p style="font-size: 15px; color: #1e40af; background: #eff6ff; padding: 12px 16px; border-radius: 8px; line-height: 1.7; margin: 0 0 14px 0; font-weight: 700;">
+        “爸爸！快来看！原本空着的两个杯子全都装满水了！而且……所有杯子的水面居然都一样高了！”
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        经过一整夜的静静流淌，<strong>5 个杯子里的水面，神奇地达到了几乎完全一致的水平平衡线！</strong>
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        不过实事求是地说，因为缺了红和蓝，粉色和绿色跟黄色混在一起，混色反差不如标准三原色强烈。我对小龙包说：“哎呀，这次选色有点小失误，混出来的颜色淡淡的。”
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        她却趴在桌子上，盯着那几座湿透的彩虹桥看了很久，眼神里不仅丝毫没有沮丧，反而闪着光兴奋地问我：
+      </p>
+      <p style="font-size: 15px; color: #9a3412; background: #fff7ed; padding: 12px 16px; border-radius: 8px; line-height: 1.7; margin: 0 0 14px 0; font-weight: 800;">
+        “爸爸！如果下次我们把三个杯子里的纸桥，同时搭进中间同一个空杯子里，最后会混出什么超级大怪兽颜色？”
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        成人在乎的是“按说明书复现完美的景观”，而孩子在乎的是“水到底是怎么走过来的，我还能怎么玩它”。这次小小的偏航，反而彻底激活了她自主构想“多变量汇流系统”的探究野心。
+      </p>
+    </section>
+
+    <!-- SECTION 04 -->
+    <section style="margin-bottom: 32px;">
+      <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #ff5722; padding-bottom: 6px; margin: 0 0 16px 0; display: inline-block;">
+        04 / 物理第一性原理：大树到底是怎么喝水的？
+      </h2>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        在观察彩虹桥的过程中，我和她聊起了大自然的奥秘。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        俗话说“水往低处流”，那大马路边二三十米高的参天大树，地底下又没有抽水机，它是怎么把泥土里的水一口气吸到最顶上的树叶里的？
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        秘密就藏在这张小小的厨房纸巾里。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        纸巾是用树木纤维做成的，里面布满了肉眼看不见的极细微管道。水分子有两个超能力：
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        1. <strong>附着力</strong>：水分子特别喜欢黏着管道壁向上攀爬；<br>
+        2. <strong>内聚力</strong>：水分子之间像好朋友一样紧紧手拉着手不松开。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        最前面的水分子抓着纤维管往上爬，后面的水分子就像一长串开火车的车厢一样被整体拉了上去——在物理学中，这叫<strong>「毛细现象」（Capillary Action）</strong>。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        而当两个杯子的水位在重力和大气压的作用下达到一致时，水就安静地停止了流动——这就是<strong>连通器的平衡律</strong>。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        这些初中物理课本上的抽象定律，在一个 7 岁女孩眼里，是她亲手折过的纸桥、亲自画过的水杯，和整整一晚上的耐心守候。
+      </p>
+    </section>
+
+    <!-- SECTION 05 -->
+    <section style="margin-bottom: 32px;">
+      <h2 style="font-size: 18px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #ff5722; padding-bottom: 6px; margin: 0 0 16px 0; display: inline-block;">
+        05 / 写在最后：守护那份自发的期待
+      </h2>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        做完实验的周六下午，小龙包已经开始兴奋地问我下周六要做什么了。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        从第 1 周的跃跃欲试，到第 2 周的主动追问；从遇到生字的抗拒，到放手画下整座彩虹桥——我最大的收获，不是她记住了多少名词，而是看到一个 7 岁的孩子，<strong>正在逐步建立对自己探索过程的拥有感（Ownership）</strong>。
+      </p>
+      <p style="font-size: 15px; color: #334155; line-height: 1.8; margin: 0 0 14px 0;">
+        在这个算法无孔不入的快节奏时代，让孩子慢下来，在厨房里为几滴颜料守候一整夜，或许就是我们给孩子最好的定力与自主性训练。
+      </p>
+    </section>
+
+    <!-- SECTION 06: PREVIEW & INTERACTION -->
+    <section style="background: linear-gradient(135deg, #0f172a, #1e1b4b); color: #ffffff; border-radius: 16px; padding: 24px 20px; text-align: center; margin-top: 36px;">
+      <div style="display: inline-block; background: #07c160; color: white; font-size: 12px; font-weight: 700; padding: 3px 12px; border-radius: 12px; margin-bottom: 12px;">
+        下周六实验预告 · W03
+      </div>
+      <h3 style="font-size: 18px; font-weight: 800; margin: 0 0 10px 0;">
+        🥊 《变硬变软的非牛顿流体》（Oobleck）
+      </h3>
+      <p style="font-size: 13px; color: #cbd5e1; line-height: 1.6; margin: 0 0 16px 0;">
+        <strong>核心概念：</strong>剪切增稠与物质状态的多样性。<br>
+        <strong>材料清单：</strong>一袋普通玉米淀粉（超市3块钱）、清水、一个大碗。<br>
+        <strong>震撼现象：</strong>拳头猛砸坚硬如铁，慢插柔滑如水；抓成球一松手立刻如泥浆流走！
+      </p>
+
+      <div style="background: rgba(255,255,255,0.08); border: 1px dashed rgba(255,255,255,0.25); border-radius: 10px; padding: 14px; margin-top: 14px; text-align: left;">
+        <div style="font-size: 14px; font-weight: 800; color: #fbbf24; margin-bottom: 6px;">
+          💬 今日互动与交流：
+        </div>
+        <div style="font-size: 13px; color: #e2e8f0; line-height: 1.6;">
+          你家孩子在写作业或做记录时，也有过因为“生字不会写”而抗拒甚至磨蹭的情况吗？平时你是怎么引导的？欢迎在下方留言区跟我聊聊你的育儿体会！
+        </div>
+        <div style="margin-top: 10px; font-size: 13px; color: #38bdf8; font-weight: 700; text-align: center;">
+          如果这期小龙包的“手绘彩虹桥”也给了你一点启发，欢迎点个【赞】和【在看】❤️
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function copyWechatContent() {
+      const container = document.getElementById('wechatArticleContent');
+      const tip = document.getElementById('statusTip');
+      const btn = document.getElementById('copyArticleBtn');
+
+      try {
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(container);
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        const successful = document.execCommand('copy');
+        selection.removeAllRanges();
+
+        if (successful) {
+          tip.textContent = "✅ 已成功复制排版内容！快去公众号后台按 Ctrl+V / Cmd+V 粘贴吧！";
+          tip.style.color = "#4ade80";
+          btn.style.background = "#10b981";
+          btn.innerHTML = "<span>🎉 复制成功！</span>";
+          setTimeout(() => {
+            btn.innerHTML = "<span>📋 再次复制全文</span>";
+          }, 3000);
+        } else {
+          throw new Error('execCommand failed');
+        }
+      } catch (err) {
+        tip.textContent = "⚠️ 自动复制受限，请直接在页面上手动选中下方内容复制。";
+        tip.style.color = "#f87171";
+      }
+    }
+  </script>
+</body>
+</html>
